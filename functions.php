@@ -78,10 +78,12 @@ function task4($num1,$num2){
 }
 
 function task5($str){
-    $str = strtolower($str);
+    $str = mb_strtolower($str);
     $str = str_replace(" ","",$str);
-	$str1 = strrev($str);
-    if($str===$str1){
+    $array = preg_split('//u', $str, null, PREG_SPLIT_NO_EMPTY);
+    $array = array_reverse($array);
+    $str1 = implode('',$array);
+	if($str === $str1){
 	    return true;
 	} else {
 	    return false;
